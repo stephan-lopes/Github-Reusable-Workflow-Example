@@ -1,0 +1,14 @@
+name: workflow
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  job1:
+    uses: ./reusable-workflow.yml
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo ${{ needs.job1.outputs.new_output }}

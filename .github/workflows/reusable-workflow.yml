@@ -1,0 +1,17 @@
+name: Workflow Reutilizável
+
+on:
+  workflow_call:
+    outputs:
+      new_output: ${{ jobs.example.outputs.output }} 
+
+
+jobs:
+  example:
+    name: Generate Output
+    runs-on: ubuntu-latest
+    outputs:
+      output: ${{ steps.step1.outputs.output_new }}
+    steps:
+      - id: step1
+        run: echo "output_new=hello" >> $GITHUB_OUTPUT

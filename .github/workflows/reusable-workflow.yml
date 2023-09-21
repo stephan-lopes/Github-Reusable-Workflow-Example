@@ -3,7 +3,8 @@ name: Workflow Reutilizável
 on:
   workflow_call:
     outputs:
-      new_output: ${{ jobs.example.outputs.output }} 
+      new_output: 
+        value: ${{ jobs.example.outputs.output }} 
 
 
 jobs:
